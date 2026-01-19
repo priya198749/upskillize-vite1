@@ -1,0 +1,402 @@
+/* ========================================
+   ROOT STYLES
+======================================== */
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   BODY RESET
+======================================== */
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   SMOOTH SCROLLING
+======================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.page-header {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+/* ========================================
+   LOGO STYLES
+======================================== */
+
+.logo {
+  height: clamp(4em, 6vw, 6em);
+  padding: clamp(1em, 1.5vw, 1.5em);
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.read-the-docs {
+  color: #888;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+}
+
+/* ========================================
+   FIXED NAVBAR STYLES
+======================================== */
+
+/* Navbar Fixed Position */
+.navbar-fixed {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+  background-color: white !important;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Navbar Container */
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Navbar Shadow Effects */
+.navbar-scrolled {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.navbar-not-scrolled {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Navbar Spacer - Prevents content from hiding under navbar */
+.navbar-spacer {
+  height: clamp(64px, 10vw, 72px);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Nav Links - Responsive */
+.nav-link {
+  color: #374151;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  font-size: clamp(0.875rem, 1.15vw, 1rem);
+}
+
+.nav-link:hover {
+  color: #4f46e5;
+}
+
+/* CTA Button - Responsive */
+.nav-cta-button {
+  background-color: #4f46e5;
+  color: white;
+  padding: clamp(0.4rem, 1vw, 0.5rem) clamp(1rem, 1.5vw, 1.25rem);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.15vw, 1rem);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.nav-cta-button:hover {
+  background-color: #4338ca;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   DROPDOWN MENU STYLES
+======================================== */
+
+/* Dropdown Wrapper */
+nav .dropdown-wrapper,
+.navbar-dropdown-trigger {
+  position: relative;
+}
+
+/* Dropdown Menu - Responsive */
+.navbar-dropdown,
+nav .dropdown-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  width: clamp(12rem, 20vw, 14rem);
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e5e7eb;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 10000;
+}
+
+/* Show dropdown on hover */
+.navbar-dropdown-trigger:hover .navbar-dropdown,
+nav .dropdown-wrapper:hover .dropdown-menu,
+nav .dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+}
+
+/* Create invisible bridge between button and dropdown */
+nav .dropdown-wrapper::before,
+.navbar-dropdown-trigger::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
+  z-index: 10;
+}
+
+/* Dropdown Items - Responsive */
+.navbar-dropdown-item {
+  display: block;
+  padding: clamp(0.6rem, 1vw, 0.75rem) clamp(1rem, 1.5vw, 1.25rem);
+  color: #374151;
+  font-size: clamp(0.875rem, 1.15vw, 1rem);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+}
+
+.navbar-dropdown-item:hover {
+  background-color: #eef2ff;
+  color: #4f46e5;
+}
+
+.navbar-dropdown-item:first-child {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.navbar-dropdown-item:last-child {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Extra small devices (phones, less than 640px) */
+@media (max-width: 639px) {
+  .navbar-container {
+    padding: 0.75rem 1rem;
+  }
+  
+  .navbar-spacer {
+    height: 64px;
+  }
+  
+  .nav-link {
+    font-size: 0.875rem;
+  }
+  
+  .nav-cta-button {
+    padding: 0.4rem 0.875rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Small devices (landscape phones, 640px and up) */
+@media (min-width: 640px) and (max-width: 767px) {
+  .navbar-container {
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navbar-container {
+    padding: 1rem 1.5rem;
+  }
+  
+  .navbar-spacer {
+    height: 68px;
+  }
+}
+
+/* Large devices (laptops, 1024px and up) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .navbar-container {
+    padding: 1rem 1.5rem;
+  }
+  
+  .navbar-spacer {
+    height: 72px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1280px and up) */
+@media (min-width: 1280px) {
+  .navbar-container {
+    padding: 1rem 1.5rem;
+  }
+  
+  .navbar-spacer {
+    height: 72px;
+  }
+}
+
+/* ========================================
+   MOBILE MENU SPECIFIC STYLES
+======================================== */
+
+@media (max-width: 768px) {
+  /* Mobile dropdown menu */
+  .navbar-dropdown,
+  nav .dropdown-menu {
+    position: static;
+    width: 100%;
+    margin-top: 0;
+    box-shadow: none;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  /* Show mobile menu */
+  .mobile-menu-open .navbar-dropdown,
+  .mobile-menu-open nav .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+  }
+}
+
+/* ========================================
+   LAYOUT FIXES
+======================================== */
+
+/* Ensure all pages start below the navbar */
+main,
+.main-content,
+section:first-of-type {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix any potential layout issues */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   RESPONSIVE PADDING & MARGINS
+======================================== */
+
+.section-padding {
+  padding: clamp(3rem, 5vw, 5rem) clamp(1rem, 2vw, 2rem);
+}
+
+.container-padding {
+  padding-left: clamp(1rem, 2vw, 2rem);
+  padding-right: clamp(1rem, 2vw, 2rem);
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: clamp(0.875rem, 1.15vw, 1rem);
+  z-index: 10000;
+}
+
+.skip-to-main:focus {
+  top: 0;
+}
+
+/* ========================================
+   PRINT STYLES
+======================================== */
+
+@media print {
+  .navbar-fixed,
+  .nav-cta-button,
+  button,
+  .no-print {
+    display: none !important;
+  }
+  
+  .navbar-spacer {
+    height: 0;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+  }
+}

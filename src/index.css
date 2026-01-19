@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   RESPONSIVE TYPOGRAPHY BASE
+======================================== */
+
+/* Base Font Sizes for Different Screen Sizes */
+html {
+  /* Mobile first - 14px base */
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+/* Small tablets and large phones (640px and up) */
+@media (min-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Small laptops (1024px and up) */
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* 13-14 inch laptops (1280px and up) */
+@media (min-width: 1280px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* 15 inch laptops (1366px and up) */
+@media (min-width: 1366px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* 15-17 inch laptops (1440px and up) */
+@media (min-width: 1440px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+/* Large displays (1920px and up) */
+@media (min-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Extra large displays (2560px and up) */
+@media (min-width: 2560px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+/* ========================================
+   FLUID TYPOGRAPHY CLASSES
+======================================== */
+
+/* Headings with fluid scaling */
+h1 {
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: clamp(0.875rem, 1.25vw, 1.125rem);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* Body text */
+p {
+  font-size: clamp(0.875rem, 1.25vw, 1.125rem);
+  line-height: 1.7;
+}
+
+/* Small text */
+small {
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  line-height: 1.5;
+}
+
+/* Buttons */
+button {
+  font-size: clamp(0.875rem, 1.15vw, 1rem);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+/* Input fields */
+input,
+textarea,
+select {
+  font-size: clamp(0.875rem, 1.15vw, 1rem);
+}
+
+/* ========================================
+   GLOBAL RESET
+======================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #5B4B8A;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #5B4B8A;
+}
+
+/* ========================================
+   LINKS
+======================================== */
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+  font-size: clamp(0.875rem, 1.15vw, 1rem);
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+/* ========================================
+   RESPONSIVE IMAGE HANDLING
+======================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   UTILITY CLASSES FOR RESPONSIVE TEXT
+======================================== */
+
+.text-responsive-xs {
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+}
+
+.text-responsive-sm {
+  font-size: clamp(0.875rem, 1.15vw, 1rem);
+}
+
+.text-responsive-base {
+  font-size: clamp(0.875rem, 1.25vw, 1.125rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+}
+
+.text-responsive-2xl {
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+}
+
+.text-responsive-3xl {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.text-responsive-4xl {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.text-responsive-5xl {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* ========================================
+   RESPONSIVE CONTAINER
+======================================== */
+
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    max-width: 640px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: 1024px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-responsive {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-responsive {
+    max-width: 1536px;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+======================================== */
+
+@media print {
+  html {
+    font-size: 12pt;
+  }
+  
+  body {
+    background-color: white;
+  }
+}
