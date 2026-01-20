@@ -85,7 +85,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   name="name"
-                  className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-gray-400 transition-colors"
+                  className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                   placeholder="Name"
                   required
                   disabled={isLoading}
@@ -93,7 +93,7 @@ export default function Contact() {
                 <input
                   name="email"
                   type="email"
-                  className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-gray-400 transition-colors"
+                  className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                   placeholder="Email"
                   required
                   disabled={isLoading}
@@ -102,31 +102,44 @@ export default function Contact() {
 
               <input
                 name="phone"
-                className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-gray-400 transition-colors"
+                className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                 placeholder="Phone (optional)"
                 disabled={isLoading}
               />
 
               <input
                 name="company"
-                className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-gray-400 transition-colors"
+                className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                 placeholder="Company (optional)"
                 disabled={isLoading}
               />
 
-              <select
-                name="inquiry"
-                className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-gray-400 transition-colors"
-                disabled={isLoading}
-              >
-                <option>Course Info</option>
-                <option>Corporate Training</option>
-                <option>Partnership</option>
-              </select>
+              <div className="relative">
+                <select
+                  name="inquiry"
+                  className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all appearance-none bg-white cursor-pointer"
+                  disabled={isLoading}
+                  defaultValue=""
+                  required
+                >
+                  <option value="" disabled>Select inquiry type</option>
+                  <option value="Academic Training">Academic Training</option>
+                  <option value="Business Consulting">Business Consulting</option>
+                  <option value="Corporate Training">Corporate Training</option>
+                  <option value="Products">Products</option>
+                  <option value="Partnership">Partnership</option>
+                </select>
+                {/* Custom dropdown arrow */}
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
 
               <textarea
                 name="message"
-                className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full min-h-[100px] sm:min-h-[120px] text-sm sm:text-base focus:outline-none focus:border-gray-400 transition-colors"
+                className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full min-h-[100px] sm:min-h-[120px] text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
                 placeholder="Message"
                 required
                 disabled={isLoading}
@@ -135,18 +148,28 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gray-800 text-white px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold transition-all disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
               >
-                {isLoading ? "Sending..." : "Send Message"}
+                {isLoading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  "Send Message"
+                )}
               </button>
 
               {status && (
-                <div className={`text-sm text-center mt-3 p-3 rounded-lg ${
+                <div className={`text-sm text-center mt-3 p-3 rounded-lg font-medium ${
                   status.includes("✅") 
-                    ? "bg-green-100 text-green-800" 
+                    ? "bg-green-100 text-green-800 border border-green-300" 
                     : status.includes("❌")
-                    ? "bg-red-100 text-red-800"
-                    : "bg-blue-100 text-blue-800"
+                    ? "bg-red-100 text-red-800 border border-red-300"
+                    : "bg-blue-100 text-blue-800 border border-blue-300"
                 }`}>
                   {status}
                 </div>
