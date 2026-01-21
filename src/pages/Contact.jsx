@@ -3,20 +3,24 @@ import React, { useState } from "react";
 export default function Contact() {
   const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    inquiry: "",
+    message: ""
+  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async () => {
     setIsLoading(true);
-
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      phone: e.target.phone.value,
-      company: e.target.company.value,
-      inquiry: e.target.inquiry.value,
-      message: e.target.message.value,
-    };
-
     setStatus("Sending...");
 
     try {
@@ -39,7 +43,14 @@ export default function Contact() {
 
       if (data.success) {
         setStatus("✅ Message sent successfully! We'll get back to you soon.");
-        e.target.reset();
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          inquiry: "",
+          message: ""
+        });
       } else {
         setStatus("❌ Failed to send message. Please try again.");
       }
@@ -81,27 +92,31 @@ export default function Contact() {
               Contact Us
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                   placeholder="Name"
-                  required
                   disabled={isLoading}
                 />
                 <input
                   name="email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                   placeholder="Email"
-                  required
                   disabled={isLoading}
                 />
               </div>
 
               <input
                 name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                 placeholder="Phone (optional)"
                 disabled={isLoading}
@@ -109,45 +124,40 @@ export default function Contact() {
 
               <input
                 name="company"
+                value={formData.company}
+                onChange={handleChange}
                 className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                 placeholder="Company (optional)"
                 disabled={isLoading}
               />
 
-              <div className="relative">
-                <select
-                  name="inquiry"
-                  className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all appearance-none bg-white cursor-pointer"
-                  disabled={isLoading}
-                  defaultValue=""
-                  required
-                >
-                  <option value="" disabled>Select inquiry type</option>
-                  <option value="Academic Training">Academic Training</option>
-                  <option value="Business Consulting">Business Consulting</option>
-                  <option value="Corporate Training">Corporate Training</option>
-                  <option value="Products">Products</option>
-                  <option value="Partnership">Partnership</option>
-                </select>
-                {/* Custom dropdown arrow */}
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
+              <select
+                name="inquiry"
+                value={formData.inquiry}
+                onChange={handleChange}
+                className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all bg-white cursor-pointer"
+                disabled={isLoading}
+              >
+                <option value="">Select inquiry type</option>
+                <option value="Academic Training">Academic Training</option>
+                <option value="Business Consulting">Business Consulting</option>
+                <option value="Corporate Training">Corporate Training</option>
+                <option value="Products">Products</option>
+                <option value="Partnership">Partnership</option>
+              </select>
 
               <textarea
                 name="message"
+                value={formData.message}
+                onChange={handleChange}
                 className="border border-gray-300 rounded-lg p-2.5 sm:p-3 w-full min-h-[100px] sm:min-h-[120px] text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
                 placeholder="Message"
-                required
                 disabled={isLoading}
               />
 
               <button
-                type="submit"
-                disabled={isLoading}
+                onClick={handleSubmit}
+                disabled={isLoading || !formData.name || !formData.email || !formData.inquiry || !formData.message}
                 className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold transition-all disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 {isLoading ? (
@@ -174,7 +184,7 @@ export default function Contact() {
                   {status}
                 </div>
               )}
-            </form>
+            </div>
           </div>
         </div>
       </section>

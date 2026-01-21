@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
@@ -22,33 +22,106 @@ import {
 } from "lucide-react";
 
 export default function CorporateTraining() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroBackgrounds = [
+    {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
+      overlay: "from-black/80 via-black/60 to-transparent"
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop",
+      overlay: "from-blue-900/80 via-blue-900/60 to-transparent"
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop",
+      overlay: "from-indigo-900/80 via-indigo-900/60 to-transparent"
+    },
+    {
+      id: 4,
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop",
+      overlay: "from-purple-900/80 via-purple-900/60 to-transparent"
+    }
+  ];
+
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroBackgrounds.length);
+    }, 6000);
+    return () => clearInterval(slideInterval);
+  }, [heroBackgrounds.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroBackgrounds.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroBackgrounds.length) % heroBackgrounds.length);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f1729] via-[#1a2847] to-[#243452]">
+      <style>{`
+        .hero-background-image {
+          transition: opacity 1500ms ease-in-out;
+        }
+      `}</style>
       
      {/* ===== HERO SECTION ===== */}
-      <section className="relative overflow-hidden p-0 min-h-[85vh] flex items-center" style={{
-        background: 'linear-gradient(135deg, #0a0e27 0%, #1a2332 50%, #2a3142 100%)',
-        color: 'white'
-      }}>
-        {/* Hero pattern overlay */}
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: 'radial-gradient(circle at 15% 30%, rgba(91, 79, 229, 0.15) 0%, transparent 60%), radial-gradient(circle at 85% 70%, rgba(123, 111, 245, 0.12) 0%, transparent 60%)'
-        }} />
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }} />
+      <section className="relative overflow-hidden p-0 min-h-[85vh] flex items-center">
+        {/* Background Images */}
+        {heroBackgrounds.map((bg, index) => (
+          <div
+            key={bg.id}
+            className={`hero-background-image absolute inset-0 ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${bg.image})` }}
+            />
+            <div className={`absolute inset-0 bg-gradient-to-r ${bg.overlay}`}></div>
+          </div>
+        ))}
 
-        <div className="max-w-[1400px] mx-auto px-12 relative z-[2] grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+        {/* Navigation Buttons */}
+        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition-all duration-300">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition-all duration-300">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        {/* Slide Indicators */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {heroBackgrounds.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentSlide ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/40 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-[1400px] mx-auto px-12 relative z-[2] w-full flex items-center min-h-[85vh]">
           {/* Hero Content */}
-          <div className="py-16">
-            <div className="inline-block bg-gradient-to-br from-[#0f1729] via-[#1a2847] to-[#243452] text-[#a99eff] px-5 py-2 rounded-[30px] text-[0.85rem] font-semibold mb-8 border border-[rgba(91,79,229,0.3)]">
+          <div className="py-16 text-center w-full">
+            <div className="inline-block bg-white/10 backdrop-blur-sm text-[#a99eff] px-5 py-2 rounded-[30px] text-[0.85rem] font-semibold mb-8 border border-[rgba(91,79,229,0.3)]">
               🎯 Enterprise Training Solutions
             </div>
             
-            <h1 className="text-[2.8rem] font-extrabold mb-6 leading-[1.15] tracking-[-0.02em]">
+            <h1 className="text-[2.8rem] sm:text-[3.5rem] lg:text-[4rem] font-extrabold mb-6 leading-[1.15] tracking-[-0.02em] text-white">
               Strategic <span className="bg-gradient-to-br from-white to-[#a99eff] bg-clip-text text-transparent" style={{
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
@@ -56,44 +129,26 @@ export default function CorporateTraining() {
               Transformation
             </h1>
             
-            <p className="text-[1.25rem] leading-[1.7] text-[rgba(255,255,255,0.85)] mb-12 font-normal">
+            <p className="text-[1.25rem] leading-[1.7] text-white/90 mb-12 font-normal max-w-4xl mx-auto">
               Precision diagnostics, tailored curriculum design, and industry-expert delivery—
               following proven ADDIE methodology to bridge skill gaps, drive behavioral change, 
               unlock productivity, fuel innovation, and accelerate revenue growth
             </p>
             
-            <div className="flex gap-6 flex-wrap">
+            <div className="flex gap-6 flex-wrap justify-center">
               <a
                 href="#programs"
-                className="inline-flex items-center gap-3 py-[1.1rem] px-[2.8rem] rounded-xl font-semibold text-base bg-[rgba(255,255,255,0.1)] text-white border-2 border-[rgba(255,255,255,0.2)] backdrop-blur-[10px] hover:bg-[rgba(255,255,255,0.15)] hover:border-[rgba(255,255,255,0.4)] transition-all duration-[400ms]"
+                className="inline-flex items-center gap-3 py-[1.1rem] px-[2.8rem] rounded-xl font-semibold text-base bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-[400ms]"
               >
                 Explore Programs
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-3 py-[1.1rem] px-[2.8rem] rounded-xl font-semibold text-base bg-gradient-to-br from-[#5B4FE5] to-[#7B6FF5] text-white shadow-[0_10px_30px_rgba(91,79,229,0.3)] hover:shadow-[0_15px_40px_rgba(91,79,229,0.4)] hover:-translate-y-1 transition-all duration-[400ms]"
+                className="inline-flex items-center gap-3 py-[1.1rem] px-[2.8rem] rounded-xl font-semibold text-base bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-[400ms]"
               >
                 Connect To Collaboration →
               </Link>
             </div>
-          </div>
-
-          {/* Hero Image */}
-          <div className="relative h-[500px] hidden lg:flex items-center justify-center">
-            {/* Decorative blur element */}
-            <div className="absolute -top-5 -right-5 w-[200px] h-[200px] rounded-[30px] opacity-20" style={{
-              background: 'linear-gradient(135deg, #5B4FE5 0%, #7B6FF5 100%)',
-              filter: 'blur(40px)'
-            }} />
-            
-            <img 
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop" 
-              alt="Team collaboration"
-              className="w-full h-full object-cover rounded-[20px] relative z-10"
-              style={{
-                boxShadow: '0 30px 60px rgba(0,0,0,0.4)'
-              }}
-            />
           </div>
         </div>
       </section>

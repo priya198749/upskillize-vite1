@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
@@ -27,77 +27,118 @@ import {
 } from "lucide-react";
 
 export default function CorporateConsulting() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroBackgrounds = [
+    {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=2070&h=1380&fit=crop",
+      overlay: "from-black/80 via-black/60 to-transparent"
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=2070&h=1380&fit=crop",
+      overlay: "from-blue-900/80 via-blue-900/60 to-transparent"
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=2070&h=1380&fit=crop",
+      overlay: "from-indigo-900/80 via-indigo-900/60 to-transparent"
+    },
+    {
+      id: 4,
+      image: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=2070&h=1380&fit=crop",
+      overlay: "from-purple-900/80 via-purple-900/60 to-transparent"
+    }
+  ];
+
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroBackgrounds.length);
+    }, 6000);
+    return () => clearInterval(slideInterval);
+  }, [heroBackgrounds.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroBackgrounds.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroBackgrounds.length) % heroBackgrounds.length);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f1729] via-[#1a2847] to-[#243452]">
+      <style>{`
+        .hero-background-image {
+          transition: opacity 1500ms ease-in-out;
+        }
+      `}</style>
       
       {/* ===== HERO SECTION ===== */}
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Text Content */}
-            <div className="text-center lg:text-left">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Business Consulting Services
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8">
-                Strategic consulting services powered by industry veterans to transform your business for the digital age
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
-                >
-                  Schedule Consultation
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all"
-                >
-                  Explore Services
-                </a>
-              </div>
+      <section className="relative bg-gradient-to-br from-[#0a1628] via-[#1a2d4a] to-[#1e3a5f] text-white overflow-hidden min-h-screen">
+        {heroBackgrounds.map((bg, index) => (
+          <div
+            key={bg.id}
+            className={`hero-background-image absolute inset-0 ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${bg.image})` }}
+            />
+            <div className={`absolute inset-0 bg-gradient-to-r ${bg.overlay}`}></div>
+          </div>
+        ))}
+
+        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition-all duration-300 group">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition-all duration-300 group">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {heroBackgrounds.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentSlide ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/40 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 z-10 flex items-center min-h-screen">
+          <div className="text-center lg:text-left w-full">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
+              Business Consulting Services
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto lg:mx-0">
+              Strategic consulting services powered by industry veterans to transform your business for the digital age
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all shadow-xl"
+              >
+                Schedule Consultation
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all shadow-xl"
+              >
+                Explore Services
+              </a>
             </div>
-
-            {/* Hero Image */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-indigo-500/30 transform hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop" 
-                  alt="Business consulting team meeting"
-                  className="w-full h-auto object-cover"
-                />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent"></div>
-              </div>
-              
-              {/* Floating Stats Cards */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-2xl hidden sm:block">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-gray-800">100+</p>
-                    <p className="text-sm text-gray-600">Projects Delivered</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -top-6 -right-6 bg-white rounded-xl p-4 shadow-2xl hidden sm:block">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-gray-800">22+</p>
-                    <p className="text-sm text-gray-600">Industry Experts</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
