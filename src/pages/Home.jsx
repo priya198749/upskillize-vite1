@@ -376,7 +376,7 @@ export default function Home() {
             <div className="logo-item logo-float">
               <div className="group relative flex flex-col items-center justify-center h-32 w-full px-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-green-400/70 transition-all duration-500 hover:shadow-[0_0_40px_rgba(74,222,128,0.25)] hover:scale-105">
                 <span className="text-gray-300 text-base font-bold group-hover:text-white transition-colors text-center">
-                  Enterprise<br/>NRD
+                  Enterprise<br/>NBD
                 </span>
               </div>
             </div>
