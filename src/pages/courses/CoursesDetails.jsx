@@ -11,6 +11,7 @@ import ProductLeadershipProgram from "./ProductLeadershipProgram";
 import DataToDecisionsPowerBI from "./DataToDecisionsPowerBI";
 import MBAPlusPlus from "./MBAPlusPlus";
 import CIPLandingPage from "./CIPLandingPage";
+import CorporateReadinessProgram from "./CorporateReadinessProgram";
 import NotificationModal from "../../components/NotificationModal";
 
 export default function CourseDetails() {
@@ -60,7 +61,7 @@ export default function CourseDetails() {
     'mba-plus-plus': MBAPlusPlus,
     'ai-ml-business-leaders': CIPLandingPage,
     'digital-business-strategy-innovation': DigitalStrategyProgram,
-    'mental-health-wellness': CorporateReadinessPrograms
+    'corporate-readiness-program': CorporateReadinessProgram
   };
 
   // Check if this course has a detailed page component
