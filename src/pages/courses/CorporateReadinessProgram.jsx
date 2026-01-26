@@ -1,9 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle, Users, TrendingUp, Award, Briefcase, BookOpen, Target, Brain, MessageSquare, Clock, Star, Building } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function CorporateReadinessProgram() {
   const [activeCourse, setActiveCourse] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroBackgrounds = [
+    {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop",
+      overlay: "from-black/80 via-black/60 to-transparent"
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
+      overlay: "from-indigo-900/80 via-indigo-900/60 to-transparent"
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop",
+      overlay: "from-purple-900/80 via-purple-900/60 to-transparent"
+    },
+    {
+      id: 4,
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop",
+      overlay: "from-blue-900/80 via-blue-900/60 to-transparent"
+    }
+  ];
+
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroBackgrounds.length);
+    }, 3000);
+    return () => clearInterval(slideInterval);
+  }, [heroBackgrounds.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroBackgrounds.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroBackgrounds.length) % heroBackgrounds.length);
+  };
 
   const stats = [
     { value: "8.25%", label: "Graduates in Aligned Roles", sublabel: "Economic Survey 2024-25" },
@@ -167,153 +206,160 @@ export default function CorporateReadinessProgram() {
 
   return (
     <div className="w-full overflow-x-hidden bg-gradient-to-br from-[#0a1628] via-[#0f1f3d] to-[#152847]">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <style>{`
+        .hero-background-image {
+          transition: opacity 1500ms ease-in-out;
+        }
+      `}</style>
+
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative overflow-hidden p-0 min-h-[85vh] flex items-center">
+        {/* Background Images */}
+        {heroBackgrounds.map((bg, index) => (
+          <div
+            key={bg.id}
+            className={`hero-background-image absolute inset-0 ${
+              index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${bg.image})` }}
+            />
+            <div className={`absolute inset-0 bg-gradient-to-r ${bg.overlay}`}></div>
+          </div>
+        ))}
+
+        {/* Navigation Buttons */}
+        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition-all duration-300">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition-all duration-300">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        {/* Slide Indicators */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {heroBackgrounds.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentSlide ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/40 hover:bg-white/60"
+              }`}
+            />
+          ))}
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <div className="inline-block mb-6">
-            <span className="bg-gradient-to-r from-purple-500/10 to-cyan-500/10 backdrop-blur-sm px-6 py-3 rounded-full border border-purple-500/20 text-purple-400 text-sm font-semibold tracking-wider uppercase">
+        <div className="max-w-[1400px] mx-auto px-12 relative z-[2] w-full flex items-center min-h-[85vh]">
+          {/* Hero Content */}
+          <div className="py-16 text-center w-full">
+            <div className="inline-block bg-white/10 backdrop-blur-sm text-purple-300 px-5 py-2 rounded-[30px] text-[0.85rem] font-semibold mb-8 border border-purple-400/30">
               🎓 Professional Transformation
-            </span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-100 to-cyan-100 mb-6">
-            Mastering Corporate Readiness
-          </h1>
-
-          <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
-            Bridge the gap from campus to corporate with essential virtues, refined skills, and unwavering ethical foundations
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <button className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:scale-105">
-              Enroll Now
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all">
-              Download Curriculum
-            </button>
-          </div>
-
-          {/* Program Highlights */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { value: "13 Weeks", label: "Duration", icon: <Clock className="w-6 h-6" /> },
-              { value: "3 Courses", label: "Core Modules", icon: <BookOpen className="w-6 h-6" /> },
-              { value: "15+ Sessions", label: "Interactive", icon: <Users className="w-6 h-6" /> },
-              { value: "100%", label: "Practical", icon: <Target className="w-6 h-6" /> }
-            ].map((item, i) => (
-              <div key={i} className="bg-gradient-to-br from-[#1e2d4a]/80 to-[#2a3f5f]/80 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                <div className="text-purple-400 mb-2 flex justify-center">{item.icon}</div>
-                <div className="text-3xl font-bold text-white mb-1">{item.value}</div>
-                <div className="text-gray-300 text-sm">{item.label}</div>
-              </div>
-            ))}
+            </div>
+            
+            <h1 className="text-[2.8rem] sm:text-[3.5rem] lg:text-[4rem] font-extrabold mb-6 leading-[1.15] tracking-[-0.02em] text-white">
+              Mastering <span className="bg-gradient-to-br from-white to-purple-300 bg-clip-text text-transparent" style={{
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}>Corporate</span><br/>
+              Readiness
+            </h1>
+            
+            <p className="text-[1.25rem] leading-[1.7] text-white/90 mb-12 font-normal max-w-4xl mx-auto">
+              Bridge the gap from campus to corporate with essential virtues, refined skills, 
+              and unwavering ethical foundations that prepare students for real-world success
+            </p>
+            
+            <div className="flex gap-6 flex-wrap justify-center">
+              <a
+                href="#curriculum"
+                className="inline-flex items-center gap-3 py-[1.1rem] px-[2.8rem] rounded-xl font-semibold text-base bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-[400ms]"
+              >
+                View Curriculum
+              </a>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-3 py-[1.1rem] px-[2.8rem] rounded-xl font-semibold text-base bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-[400ms]"
+              >
+                Enroll Your Students →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Problem Landscape */}
+      {/* Crisis Statistics */}
       <section className="py-20 bg-gradient-to-br from-[#0f1729] via-[#1a2847] to-[#243452]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              The Problem Landscape
+              The Employability Crisis
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Understanding the critical skills gap in India's graduate workforce
+              Why corporate readiness training is essential for today's graduates
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, i) => (
-              <div key={i} className="bg-gradient-to-br from-red-500/10 to-orange-500/10 backdrop-blur-sm rounded-xl p-8 border border-red-500/20 text-center">
-                <div className="text-5xl font-bold text-red-400 mb-2">{stat.value}</div>
-                <div className="text-white font-semibold mb-2">{stat.label}</div>
-                <div className="text-gray-400 text-sm">{stat.sublabel}</div>
+              <div key={i} className="bg-gradient-to-br from-[#1e2d4a]/80 to-[#2a3f5f]/80 backdrop-blur-sm rounded-xl p-8 border border-white/10 text-center hover:border-purple-400/50 transition-all">
+                <div className="text-5xl font-bold text-purple-400 mb-3">{stat.value}</div>
+                <div className="text-xl text-white font-semibold mb-2">{stat.label}</div>
+                <div className="text-sm text-gray-400">{stat.sublabel}</div>
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Skills Mismatch",
-                description: "Only 8.25% of graduates employed in roles aligning with their qualifications. Over 50% are underemployed in elementary or semi-skilled jobs.",
-                icon: <TrendingUp className="w-8 h-8" />,
-                color: "from-red-500 to-orange-500"
-              },
-              {
-                title: "Declining Employability",
-                description: "Overall employability dropped from 44.3% (2023) to 42.6% (2024), primarily driven by non-technical skills deficit.",
-                icon: <Award className="w-8 h-8" />,
-                color: "from-orange-500 to-yellow-500"
-              },
-              {
-                title: "Soft Skills Deficit",
-                description: "Despite 50% proficiency in emotional intelligence and creativity, critical gaps exist in communication, critical thinking, and leadership.",
-                icon: <MessageSquare className="w-8 h-8" />,
-                color: "from-purple-500 to-pink-500"
-              },
-              {
-                title: "Technical vs. Non-Technical",
-                description: "While technical proficiency (46.1% in AI/ML roles) isn't the sole issue, significant deficits exist in non-technical roles and soft skills.",
-                icon: <Brain className="w-8 h-8" />,
-                color: "from-cyan-500 to-blue-500"
-              }
-            ].map((item, i) => (
-              <div key={i} className="bg-gradient-to-br from-[#1e2d4a]/80 to-[#2a3f5f]/80 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all hover:scale-105">
-                <div className={`w-16 h-16 bg-gradient-to-r ${item.color} rounded-lg flex items-center justify-center mb-4 text-white`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-gray-300 leading-relaxed text-sm">{item.description}</p>
-              </div>
-            ))}
+          <div className="mt-12 bg-gradient-to-r from-red-500/10 to-orange-500/10 backdrop-blur-sm rounded-xl p-8 border border-red-500/20">
+            <p className="text-gray-200 text-lg text-center leading-relaxed">
+              <span className="font-bold text-red-400">The Reality:</span> Most graduates lack essential soft skills, professional etiquette, 
+              and corporate culture understanding—making them unprepared for workplace success despite technical qualifications.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Core Focus Areas */}
+      {/* Focus Areas */}
       <section className="py-20 bg-gradient-to-br from-[#0a1628] via-[#0f1f3d] to-[#152847]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Core Program Components
+              Three Pillars of Readiness
             </h2>
-            <p className="text-xl text-gray-300">
-              Three pillars of professional excellence
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              A comprehensive approach to professional transformation
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {focusAreas.map((area, i) => (
-              <div key={i} className="bg-gradient-to-br from-[#1e2d4a]/80 to-[#2a3f5f]/80 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-white/30 transition-all hover:scale-105">
+              <div key={i} className="bg-gradient-to-br from-[#1e2d4a]/80 to-[#2a3f5f]/80 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-purple-400/50 transition-all hover:scale-105">
                 <div className={`w-16 h-16 bg-gradient-to-r ${area.color} rounded-lg flex items-center justify-center mb-6 text-white`}>
                   {area.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{area.title}</h3>
-                <p className="text-gray-300 leading-relaxed mb-6">{area.description}</p>
-                <div className={`h-1 w-24 bg-gradient-to-r ${area.color} rounded-full`}></div>
+                <p className="text-gray-300 leading-relaxed">{area.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Course Curriculum */}
-      <section className="py-20 bg-gradient-to-br from-[#0f1729] via-[#1a2847] to-[#243452]">
+      {/* Curriculum Section */}
+      <section id="curriculum" className="py-20 bg-gradient-to-br from-[#0f1729] via-[#1a2847] to-[#243452]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Detailed Curriculum
+              Comprehensive Curriculum
             </h2>
-            <p className="text-xl text-gray-300">
-              15+ interactive sessions across 3 comprehensive courses
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              13 weeks of intensive, experiential learning covering all aspects of corporate readiness
             </p>
           </div>
 
@@ -325,30 +371,32 @@ export default function CorporateReadinessProgram() {
                 onClick={() => setActiveCourse(i)}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                   activeCourse === i
-                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-xl'
                     : 'bg-white/10 text-gray-300 hover:bg-white/20'
                 }`}
               >
-                Course {i + 1}
+                {course.title}
               </button>
             ))}
           </div>
 
-          {/* Active Course Content */}
-          <div className="bg-gradient-to-br from-[#1e2d4a]/80 to-[#2a3f5f]/80 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-            <h3 className="text-3xl font-bold text-white mb-8">{courses[activeCourse].title}</h3>
-            
+          {/* Course Content */}
+          <div className="bg-gradient-to-br from-[#1e2d4a]/80 to-[#2a3f5f]/80 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+            <h3 className="text-3xl font-bold text-white mb-8 text-center">
+              {courses[activeCourse].title}
+            </h3>
+
             <div className="space-y-6">
               {courses[activeCourse].sessions.map((session, i) => (
-                <div key={i} className="bg-[#0f1729]/50 rounded-lg p-6 border border-white/5 hover:border-purple-400/30 transition-all">
+                <div key={i} className="bg-[#0a1628]/50 rounded-xl p-6 border border-white/10 hover:border-purple-400/30 transition-all">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white font-bold flex-shrink-0">
                       {i + 1}
                     </div>
                     <div className="flex-1">
                       <h4 className="text-xl font-bold text-white mb-2">{session.name}</h4>
-                      <p className="text-orange-400 text-sm mb-3">
-                        <span className="font-semibold">Growth Opportunity:</span> {session.growth}
+                      <p className="text-red-400 text-sm font-semibold mb-3">
+                        Addresses: {session.growth}
                       </p>
                     </div>
                   </div>
@@ -407,7 +455,7 @@ export default function CorporateReadinessProgram() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Program Structure
+              Overall Program Structure
             </h2>
           </div>
 
@@ -490,18 +538,20 @@ export default function CorporateReadinessProgram() {
             Join hundreds of students who've transformed into industry-ready professionals
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:scale-105">
-              <Link to="/contact" className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:scale-105">
-                Enroll Your Students
-                  <ArrowRight className="w-5 h-5" />
-              </Link>
-            </button>
-            <button className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:scale-105">
-              <Link to="/contact" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all">
-                Request Partnership Info
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </button>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:scale-105"
+            >
+              Enroll Your Students
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all"
+            >
+              Request Partnership Info
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>

@@ -8,7 +8,7 @@ export default function ProductLeadershipProgram() {
       years: '0-2',
       salary: '₹6-12 LPA',
       focus: 'Learning & Execution',
-      color: '#3B82F6'
+      color: '#1E3A5F'
     },
     {
       icon: '📊',
@@ -16,7 +16,7 @@ export default function ProductLeadershipProgram() {
       years: '2-5',
       salary: '₹12-25 LPA',
       focus: 'Feature Ownership',
-      color: '#8B5CF6'
+      color: '#FF6B35'
     },
     {
       icon: '🚀',
@@ -24,7 +24,7 @@ export default function ProductLeadershipProgram() {
       years: '5-8',
       salary: '₹25-45 LPA',
       focus: 'Product Strategy',
-      color: '#EC4899'
+      color: '#F7B731'
     },
     {
       icon: '👑',
@@ -32,7 +32,7 @@ export default function ProductLeadershipProgram() {
       years: '8-12',
       salary: '₹45-70 LPA',
       focus: 'Team Leadership',
-      color: '#F59E0B'
+      color: '#F7B731'
     },
     {
       icon: '💼',
@@ -40,7 +40,7 @@ export default function ProductLeadershipProgram() {
       years: '12-15',
       salary: '₹70-1.2 Cr',
       focus: 'Portfolio Management',
-      color: '#10B981'
+      color: '#006B7D'
     },
     {
       icon: '🌟',
@@ -48,7 +48,7 @@ export default function ProductLeadershipProgram() {
       years: '15-20',
       salary: '₹1.2-2 Cr',
       focus: 'Strategic Vision',
-      color: '#06B6D4'
+      color: '#006B7D'
     },
     {
       icon: '👨‍💼',
@@ -56,7 +56,7 @@ export default function ProductLeadershipProgram() {
       years: '20+',
       salary: '₹2+ Cr',
       focus: 'Business Impact',
-      color: '#EF4444'
+      color: '#FF6B35'
     }
   ];
 
@@ -67,7 +67,7 @@ export default function ProductLeadershipProgram() {
       pills: ['Strategy', 'Vision', 'Execution'],
       description: 'Everyone calls you a mini-CEO, but unlike real CEOs, you can\'t hire or fire anyone. You influence without authority - like being a parent to teenagers who won\'t listen! You set the vision, make tough calls, and somehow convince engineering that yes, this feature IS worth building.',
       highlight: '💡 Reality Check: You pitch like a CEO, negotiate like a diplomat, and code... well, you used to code.',
-      color: '#8B5CF6'
+      color: '#FF6B35'
     },
     {
       icon: '🎪',
@@ -75,7 +75,7 @@ export default function ProductLeadershipProgram() {
       pills: ['Stakeholders', 'Priorities', 'Deadlines'],
       description: 'Your day: Sales wants a demo feature by Friday. Engineering says it\'ll take 3 sprints. Design wants to "explore the problem space." Marketing needs the messaging yesterday. And the CEO just asked "why can\'t we be like [insert competitor]?" Meanwhile, you\'re smiling and saying "Let me prioritize that in the roadmap!"',
       highlight: '😅 Truth Bomb: You spend 50% of your time saying "no" nicely and 50% wondering if you should have said "yes"',
-      color: '#EC4899'
+      color: '#F7B731'
     },
     {
       icon: '🔮',
@@ -83,7 +83,7 @@ export default function ProductLeadershipProgram() {
       pills: ['User Research', 'Data Analysis', 'Market Trends'],
       description: 'Based on 47 user interviews, 12 A/B tests, competitor analysis, and a hunch from that one user feedback, you must predict: Will users want this? Will it drive revenue? Will engineering build it without crying? You\'re essentially reading tea leaves, but with spreadsheets and Figma prototypes.',
       highlight: '🎯 Plot Twist: Sometimes the CEO\'s "gut feeling" overrides your 3-month research study',
-      color: '#3B82F6'
+      color: '#1E3A5F'
     },
     {
       icon: '🗣️',
@@ -91,7 +91,7 @@ export default function ProductLeadershipProgram() {
       pills: ['Tech', 'Business', 'Design'],
       description: 'Engineering: "We need to refactor the API architecture for scalability."\nYou to Business: "This will make the app faster."\nBusiness: "Can we monetize dark mode?"\nYou to Engineering: "They want to know if we can add premium themes."\nDesign: "The user flow needs more delight moments."\nYou to everyone: "Let\'s add some animations!"',
       highlight: '🎓 Skill Unlocked: Speaking 5 languages - Tech, Business, Design, Executive, and Sarcasm',
-      color: '#10B981'
+      color: '#006B7D'
     },
     {
       icon: '🎬',
@@ -99,7 +99,7 @@ export default function ProductLeadershipProgram() {
       pills: ['Roadmap', 'Iterations', 'Pivots'],
       description: 'You plan a beautiful 6-month roadmap. Month 2: competitors launch your feature. Month 3: CEO discovers a "game-changing opportunity." Month 4: your star engineer quits. Month 5: users want the exact opposite of what you built. Month 6: "Let\'s pivot!" Your roadmap is more of a suggestion than a plan.',
       highlight: '🎬 Director\'s Cut: The feature you killed? It\'s back. The feature you loved? Also killed. Welcome to product!',
-      color: '#F59E0B'
+      color: '#F7B731'
     },
     {
       icon: '🤝',
@@ -107,7 +107,7 @@ export default function ProductLeadershipProgram() {
       pills: ['Daily Standups', 'Planning', 'Reviews', 'Retros'],
       description: 'Your calendar is a Tetris game of meetings: Sprint planning, backlog grooming, design review, stakeholder sync, user interview, leadership update, customer call, engineering 1:1s, cross-functional alignment, strategy session. You\'re basically a professional meeting attendee who occasionally builds products.',
       highlight: '⏰ Fun Fact: You have 3 calendars and none of them have free time. "Working hours" are 7 PM - 10 PM',
-      color: '#06B6D4'
+      color: '#006B7D'
     },
     {
       icon: '🎨',
@@ -115,7 +115,7 @@ export default function ProductLeadershipProgram() {
       pills: ['Strategy', 'Analytics', 'Design', 'Tech', 'Business'],
       description: 'Monday: Writing SQL queries for user analysis\nTuesday: Mocking up screens in Figma\nWednesday: Building financial models\nThursday: Debugging with engineers\nFriday: Presenting strategy to leadership\nWeekend: Reading about AI, blockchain, and "the next big thing"\n\nYou\'re not an expert in anything, but you know enough about everything to be dangerous!',
       highlight: '🦸 Superpower: You can talk about APIs, CAC, NPS, and UX in the same sentence and actually make sense',
-      color: '#EF4444'
+      color: '#FF6B35'
     },
     {
       icon: '💔',
@@ -123,7 +123,7 @@ export default function ProductLeadershipProgram() {
       pills: ['Scope', 'Resources', 'Reality'],
       description: 'Designer: "I have this AMAZING idea—"\nYou: "How long will it take to build?"\nEngineer: "Can we add this cool feature—"\nYou: "Does it solve a user problem?"\nExecutive: "Why don\'t we just—"\nYou: "Let me check if that\'s in our Q3 priorities."\n\nYou\'re not mean, you\'re just protecting everyone from building the wrong things. But they still think you\'re the fun police.',
       highlight: '😢 Harsh Truth: You kill more ideas than you ship. And that\'s actually your job done right.',
-      color: '#8B5CF6'
+      color: '#FF6B35'
     }
   ];
 
@@ -801,38 +801,42 @@ export default function ProductLeadershipProgram() {
       </section>
 
       {/* Career Progression */}
-      <section style={{background: 'linear-gradient(135deg, #e8f0fe 0%, #f3e8ff 100%)', padding: '80px 20px'}}>
+      <section style={{background: 'linear-gradient(135deg, #E6F7F9 0%, #F4F6F8 100%)', padding: '80px 20px'}}>
         <div style={{maxWidth: 1400, margin: '0 auto', background: 'white', padding: 50, borderRadius: 20, boxShadow: '0 20px 60px rgba(102,126,234,0.15)'}}>
           <div style={{textAlign: 'center', marginBottom: 60}}>
-            <div style={{display: 'inline-block', background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)', color: 'white', padding: '8px 24px', borderRadius: 25, fontSize: 12, fontWeight: 'bold', letterSpacing: 1, marginBottom: 20, boxShadow: '0 4px 15px rgba(79,70,229,0.3)'}}>FULFILLING, CHALLENGING & REWARDING</div>
-            <h1 style={{fontSize: '3rem', background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', marginBottom: 10, fontWeight: 800}}>Product Management Career Progression Path</h1>
-            <h2 style={{fontSize: '1.8rem', color: '#4a5568', fontWeight: 600}}>From Associate PM to C-Suite Leadership in 20+ Years</h2>
+            <div style={{display: 'inline-block', background: 'linear-gradient(135deg, #006B7D 0%, #1E3A5F 100%)', color: 'white', padding: '8px 24px', borderRadius: 25, fontSize: 12, fontWeight: 'bold', letterSpacing: 1, marginBottom: 20, boxShadow: '0 4px 15px rgba(79,70,229,0.3)'}}>FULFILLING, CHALLENGING & REWARDING</div>
+            <h1 style={{fontSize: '3rem', background: 'linear-gradient(135deg, #006B7D 0%, #1E3A5F 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', marginBottom: 10, fontWeight: 800}}>Product Management Career Progression Path</h1>
+            <h2 style={{fontSize: '1.8rem', color: '#1E3A5F', fontWeight: 600}}>From Associate PM to C-Suite Leadership in 20+ Years</h2>
           </div>
 
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 30, marginBottom: 60}}>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 30, marginBottom: 60}}>
             {careerLevels.map((l, i) => (
-              <div key={i} style={{textAlign: 'center', padding: '30px 20px', background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)', borderRadius: 20, border: `3px solid ${l.color}`}}>
-                <div style={{fontSize: '4rem', marginBottom: 15}}>{l.icon}</div>
-                <div style={{fontSize: '1rem', fontWeight: 'bold', color: '#1E293B', marginBottom: 8, lineHeight: 1.3}}>{l.title}</div>
-                <div style={{background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)', color: 'white', padding: '12px 8px', borderRadius: 8, fontWeight: 'bold', fontSize: '1.1rem', margin: '15px auto', maxWidth: 100}}>{l.years}</div>
-                <div style={{fontSize: '0.75rem', color: '#64748B', fontWeight: 600, marginTop: 5}}>Years</div>
-                <div style={{fontSize: '0.9rem', fontWeight: 'bold', background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', margin: '10px 0 5px'}}>{l.salary}</div>
-                <div style={{fontSize: '0.75rem', color: '#718096'}}>{l.focus}</div>
+              <div key={i} style={{textAlign: 'center', padding: '30px 20px', background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)', borderRadius: 20, border: `3px solid ${l.color}`, minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                <div>
+                  <div style={{fontSize: '4rem', marginBottom: 15}}>{l.icon}</div>
+                  <div style={{fontSize: '1rem', fontWeight: 'bold', color: '#1E3A5F', marginBottom: 20, lineHeight: 1.3, minHeight: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 10px'}}>{l.title}</div>
+                </div>
+                <div>
+                  <div style={{background: 'linear-gradient(135deg, #006B7D 0%, #1E3A5F 100%)', color: 'white', padding: '14px 20px', borderRadius: 10, fontWeight: 'bold', fontSize: '1.3rem', margin: '15px auto 10px', maxWidth: '140px', minWidth: '110px', whiteSpace: 'nowrap'}}>{l.years}</div>
+                  <div style={{fontSize: '0.8rem', color: '#64748B', fontWeight: 600, marginBottom: 15}}>Years</div>
+                  <div style={{fontSize: '1.1rem', fontWeight: 'bold', color: '#006B7D', margin: '12px 0 8px'}}>{l.salary}</div>
+                  <div style={{fontSize: '0.85rem', color: '#718096', lineHeight: 1.4, padding: '0 5px'}}>{l.focus}</div>
+                </div>
               </div>
             ))}
           </div>
 
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20}}>
             {[{n: '3-7', l: 'Years per level', s: 'Early career growth'}, {n: '3-5x', l: 'Salary growth', s: 'APM to Senior PM'}, {n: '15+', l: 'Leadership years', s: 'To executive level'}, {n: '20+', l: 'C-Suite impact', s: 'Strategic influence'}].map((c, i) => (
-              <div key={i} style={{background: 'linear-gradient(135deg, #EEF2FF 0%, #F3E8FF 100%)', padding: 25, borderRadius: 12, textAlign: 'center', border: '2px solid #E0E7FF'}}>
-                <div style={{fontSize: '2.5rem', fontWeight: 'bold', background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', marginBottom: 10}}>{c.n}</div>
-                <div style={{fontSize: '1rem', color: '#4a5568', fontWeight: 600, marginBottom: 5}}>{c.l}</div>
+              <div key={i} style={{background: 'linear-gradient(135deg, #E6F7F9 0%, #F4F6F8 100%)', padding: 25, borderRadius: 12, textAlign: 'center', border: '2px solid #E0E7FF'}}>
+                <div style={{fontSize: '2.5rem', fontWeight: 'bold', background: 'linear-gradient(135deg, #006B7D 0%, #1E3A5F 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', marginBottom: 10}}>{c.n}</div>
+                <div style={{fontSize: '1rem', color: '#1E3A5F', fontWeight: 600, marginBottom: 5}}>{c.l}</div>
                 <div style={{fontSize: '0.85rem', color: '#718096'}}>{c.s}</div>
               </div>
             ))}
           </div>
 
-          <div style={{marginTop: 40, background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)', padding: 40, borderRadius: 15, color: 'white'}}>
+          <div style={{marginTop: 40, background: 'linear-gradient(135deg, #006B7D 0%, #1E3A5F 100%)', padding: 40, borderRadius: 15, color: 'white'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: 30, flexWrap: 'wrap'}}>
               <div style={{width: 80, height: 80, background: 'rgba(255,255,255,0.2)', borderRadius: 20, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', flexShrink: 0}}>⚡</div>
               <div style={{flex: 1}}>
@@ -850,11 +854,11 @@ export default function ProductLeadershipProgram() {
       </section>
 
       {/* Fun Facts */}
-      <section style={{background: 'linear-gradient(135deg, #e8f0fe 0%, #f3e8ff 100%)', padding: '80px 20px'}}>
+      <section style={{background: 'linear-gradient(135deg, #E6F7F9 0%, #F4F6F8 100%)', padding: '80px 20px'}}>
         <div style={{maxWidth: 1200, margin: '0 auto', background: 'white', padding: '60px 50px', borderRadius: 25, boxShadow: '0 20px 60px rgba(79,70,229,0.15)'}}>
           <div style={{textAlign: 'center', marginBottom: 50}}>
-            <div style={{display: 'inline-block', background: 'linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%)', color: 'white', padding: '10px 30px', borderRadius: 30, fontSize: 14, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 20, boxShadow: '0 4px 15px rgba(251,191,36,0.4)'}}>✨ FUN FACTS ✨</div>
-            <h1 style={{fontSize: '3.5rem', background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', marginBottom: 15, fontWeight: 900}}>The PM Life</h1>
+            <div style={{display: 'inline-block', background: 'linear-gradient(135deg, #FBBF24 0%, #F7B731 100%)', color: 'white', padding: '10px 30px', borderRadius: 30, fontSize: 14, fontWeight: 'bold', letterSpacing: 1.5, marginBottom: 20, boxShadow: '0 4px 15px rgba(251,191,36,0.4)'}}>✨ FUN FACTS ✨</div>
+            <h1 style={{fontSize: '3.5rem', background: 'linear-gradient(135deg, #006B7D 0%, #1E3A5F 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', marginBottom: 15, fontWeight: 900}}>The PM Life</h1>
             <p style={{fontSize: '1.1rem', color: '#64748B', fontStyle: 'italic'}}>What They Don't Tell You in Job Descriptions 😄</p>
           </div>
 
@@ -862,21 +866,21 @@ export default function ProductLeadershipProgram() {
             {funFacts.map((f, i) => (
               <div key={i} style={{background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)', borderRadius: 20, padding: 35, border: `3px solid ${f.color}`}}>
                 <div style={{width: 80, height: 80, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, fontSize: 40, background: `linear-gradient(135deg, ${f.color} 0%, ${f.color}dd 100%)`, boxShadow: '0 8px 20px rgba(0,0,0,0.1)'}}>{f.icon}</div>
-                <div style={{fontSize: '1.3rem', fontWeight: 'bold', color: '#1E293B', marginBottom: 15, lineHeight: 1.3}}>{f.title}</div>
+                <div style={{fontSize: '1.3rem', fontWeight: 'bold', color: '#1E3A5F', marginBottom: 15, lineHeight: 1.3}}>{f.title}</div>
                 {f.pills && (
                   <div style={{display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 15}}>
                     {f.pills.map((p, j) => (
-                      <span key={j} style={{background: 'white', color: '#7C3AED', padding: '6px 14px', borderRadius: 20, fontSize: '0.75rem', fontWeight: 600, border: '2px solid #E9D5FF'}}>{p}</span>
+                      <span key={j} style={{background: 'white', color: '#1E3A5F', padding: '6px 14px', borderRadius: 20, fontSize: '0.75rem', fontWeight: 600, border: '2px solid #E9D5FF'}}>{p}</span>
                     ))}
                   </div>
                 )}
                 <div style={{fontSize: '0.95rem', color: '#475569', lineHeight: 1.7, marginBottom: 15, whiteSpace: 'pre-line'}}>{f.description}</div>
-                <div style={{background: 'linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%)', padding: '12px 15px', borderRadius: 10, fontSize: '0.9rem', color: '#92400E', fontWeight: 600, fontStyle: 'italic', borderLeft: '4px solid #F59E0B'}}>{f.highlight}</div>
+                <div style={{background: 'linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%)', padding: '12px 15px', borderRadius: 10, fontSize: '0.9rem', color: '#92400E', fontWeight: 600, fontStyle: 'italic', borderLeft: '4px solid #F7B731'}}>{f.highlight}</div>
               </div>
             ))}
           </div>
 
-          <div style={{background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)', padding: 40, borderRadius: 20, textAlign: 'center', color: 'white'}}>
+          <div style={{background: 'linear-gradient(135deg, #006B7D 0%, #1E3A5F 100%)', padding: 40, borderRadius: 20, textAlign: 'center', color: 'white'}}>
             <h3 style={{fontSize: '2rem', marginBottom: 15}}>Ready to Start Your PM Journey?</h3>
             <p style={{fontSize: '1rem', lineHeight: 1.6, maxWidth: 800, margin: '0 auto 25px', opacity: 0.95}}>Upskillize's Product Management programs are designed to give you real-world experience across all these areas. Learn from industry veterans, build a portfolio, and master the art of saying the right "yes" (and "no")!</p>
             <div style={{display: 'flex', justifyContent: 'center', gap: 15, flexWrap: 'wrap'}}>
